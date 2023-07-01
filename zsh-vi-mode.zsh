@@ -1429,7 +1429,9 @@ function zvm_navigation_handler() {
     count=${keys:0:-1}
     case ${keys: -1} in
       '^') cmd=(zle vi-first-non-blank);;
+      'H') cmd=(zle vi-first-non-blank);;
       '$') cmd=(zle vi-end-of-line);;
+      'L') cmd=(zle vi-end-of-line);;
       ' ') cmd=(zle vi-forward-char);;
       '0') cmd=(zle vi-digit-or-beginning-of-line);;
       'h') cmd=(zle vi-backward-char);;
@@ -3005,7 +3007,7 @@ function zvm_select_vi_mode() {
 # Reset prompt
 function zvm_reset_prompt() {
   $ZVM_RESET_PROMPT_DISABLED && return
-  
+
   local -i retval
   if [[ -z "$rawfunc" ]]; then
     zle .reset-prompt -- "$@"
